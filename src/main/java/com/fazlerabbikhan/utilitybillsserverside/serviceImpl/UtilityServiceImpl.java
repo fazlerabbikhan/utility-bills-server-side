@@ -23,7 +23,7 @@ public class UtilityServiceImpl implements UtilityService {
         UtilityEntity utilityEntity = utilityRepository.findById(id);
         UtilityResponse utilityResponse = new UtilityResponse();
         if (utilityEntity != null) {
-            utilityResponse.setOutCode("1");
+            utilityResponse.setOutCode("0");
             utilityResponse.setOutMessage("Utility found successfully" );
             utilityResponse.setId(utilityEntity.getId());
             utilityResponse.setName(utilityEntity.getName());
@@ -33,7 +33,7 @@ public class UtilityServiceImpl implements UtilityService {
             utilityResponse.setApis(utilityEntity.getApis());
             utilityResponse.setFields(utilityEntity.getFields());
         } else {
-            utilityResponse.setOutCode("0");
+            utilityResponse.setOutCode("1");
             utilityResponse.setOutMessage("Utility doesn't exist with ID " + id);
         }
         return utilityResponse;
@@ -52,7 +52,7 @@ public class UtilityServiceImpl implements UtilityService {
             existingUtility.setFields(utilityEntity.getFields());
             utilityRepository.save(existingUtility);
 
-            utilityResponse.setOutCode("1");
+            utilityResponse.setOutCode("0");
             utilityResponse.setOutMessage("Utility updated successfully");
             utilityResponse.setId(existingUtility.getId());
             utilityResponse.setName(existingUtility.getName());
@@ -62,7 +62,7 @@ public class UtilityServiceImpl implements UtilityService {
             utilityResponse.setApis(existingUtility.getApis());
             utilityResponse.setFields(existingUtility.getFields());
         } else {
-            utilityResponse.setOutCode("0");
+            utilityResponse.setOutCode("1");
             utilityResponse.setOutMessage("Utility doesn't exist with ID " + id);
         }
         return utilityResponse;

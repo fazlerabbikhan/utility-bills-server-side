@@ -23,7 +23,7 @@ public class FieldServiceImpl implements FieldService {
         FieldEntity fieldEntity = fieldRepository.findById(id);
         FieldResponse fieldResponse = new FieldResponse();
         if (fieldEntity != null) {
-            fieldResponse.setOutCode("1");
+            fieldResponse.setOutCode("0");
             fieldResponse.setOutMessage("Field found successfully" );
             fieldResponse.setId(fieldEntity.getId());
             fieldResponse.setCode(fieldEntity.getCode());
@@ -35,7 +35,7 @@ public class FieldServiceImpl implements FieldService {
             fieldResponse.setConfig(fieldEntity.getConfig());
             fieldResponse.setLabel(fieldEntity.getLabel());
         } else {
-            fieldResponse.setOutCode("0");
+            fieldResponse.setOutCode("1");
             fieldResponse.setOutMessage("Field doesn't exist with ID " + id);
         }
         return fieldResponse;
@@ -58,7 +58,7 @@ public class FieldServiceImpl implements FieldService {
             existingField.setLabel(fieldEntity.getLabel());
             fieldRepository.save(existingField);
 
-            fieldResponse.setOutCode("1");
+            fieldResponse.setOutCode("0");
             fieldResponse.setOutMessage("Field updated successfully");
             fieldResponse.setId(existingField.getId());
             fieldResponse.setCode(existingField.getCode());
@@ -70,7 +70,7 @@ public class FieldServiceImpl implements FieldService {
             fieldResponse.setConfig(existingField.getConfig());
             fieldResponse.setLabel(existingField.getLabel());
         } else {
-            fieldResponse.setOutCode("0");
+            fieldResponse.setOutCode("1");
             fieldResponse.setOutMessage("Field doesn't exist with ID " + id);
         }
         return fieldResponse;

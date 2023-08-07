@@ -19,31 +19,31 @@ public class FieldController {
     @Autowired
     private FieldRepository fieldRepository;
 
-    //Get all utilities
+    //Get all fields
     @GetMapping("all")
     public List<FieldEntity> getAllFields(){
         return fieldRepository.findAll();
     }
 
-    //Create a utility
+    //Create a field
     @PostMapping("save")
     public FieldEntity createField(@RequestBody FieldEntity fieldEntity){
         return fieldService.createField(fieldEntity);
     }
 
-    //Get a utility by ID
+    //Get a field by ID
     @GetMapping("{id}")
     public FieldResponse getFieldById(@PathVariable long id){
         return fieldService.getFieldById(id);
     }
 
-    // Update a utility
+    // Update a field
     @PutMapping("{id}")
     public FieldResponse updateField(@PathVariable long id, @RequestBody FieldEntity fieldEntity) {
         return fieldService.updateField(id, fieldEntity);
     }
 
-    // Delete a utility
+    // Delete a field
     @DeleteMapping("{id}")
     public String deleteField(@PathVariable long id) {
         return fieldService.deleteField(id);

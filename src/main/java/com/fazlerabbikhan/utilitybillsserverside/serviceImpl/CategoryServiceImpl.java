@@ -23,7 +23,7 @@ public class CategoryServiceImpl implements CategoryService {
         CategoryEntity categoryEntity = categoryRepository.findById(id);
         CategoryResponse categoryResponse = new CategoryResponse();
         if (categoryEntity != null) {
-            categoryResponse.setOutCode("1");
+            categoryResponse.setOutCode("0");
             categoryResponse.setOutMessage("Category found successfully" );
             categoryResponse.setId(categoryEntity.getId());
             categoryResponse.setCode(categoryEntity.getCode());
@@ -31,7 +31,7 @@ public class CategoryServiceImpl implements CategoryService {
             categoryResponse.setName_bn(categoryEntity.getName_bn());
             categoryResponse.setUtilities(categoryEntity.getUtilities());
         } else {
-            categoryResponse.setOutCode("0");
+            categoryResponse.setOutCode("1");
             categoryResponse.setOutMessage("Category doesn't exist with ID " + id);
         }
         return categoryResponse;
@@ -48,7 +48,7 @@ public class CategoryServiceImpl implements CategoryService {
             existingCategory.setUtilities(categoryEntity.getUtilities());
             categoryRepository.save(existingCategory);
 
-            categoryResponse.setOutCode("1");
+            categoryResponse.setOutCode("0");
             categoryResponse.setOutMessage("Category updated successfully");
             categoryResponse.setId(existingCategory.getId());
             categoryResponse.setCode(existingCategory.getCode());
@@ -56,7 +56,7 @@ public class CategoryServiceImpl implements CategoryService {
             categoryResponse.setName_bn(existingCategory.getName_bn());
             categoryResponse.setUtilities(existingCategory.getUtilities());
         } else {
-            categoryResponse.setOutCode("0");
+            categoryResponse.setOutCode("1");
             categoryResponse.setOutMessage("Category doesn't exist with ID " + id);
         }
         return categoryResponse;
